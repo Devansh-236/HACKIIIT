@@ -1,127 +1,107 @@
-# AI-Powered Recruitment System with Moya
+# AI-Powered Recruitment System
 
-This is an AI-powered recruitment system that uses the Moya framework to intelligently parse resumes and match candidates with suitable job positions.
+An advanced recruitment system powered by the Moya framework, designed to streamline the hiring process through AI-driven resume parsing, job matching, interview scheduling, and candidate assessment.
 
 ## Features
 
-- **Resume Parsing**: Extracts structured information from resume text, including:
-  - Name and contact information
-  - Skills and technologies
-  - Education history
-  - Professional experience
+- **Resume Parsing**: Extract structured information from resumes including name, contact information, skills, education, and experience.
+- **Job Matching**: Match candidates with suitable job positions based on skills, experience, and other criteria.
+- **Interview Scheduling**: Schedule interviews for matched jobs with available time slots.
+- **Candidate Assessment**: Generate comprehensive candidate assessments including technical questions, behavioral questions, and coding challenges.
 
-- **Job Matching**: Matches candidates with suitable job positions using:
-  - TF-IDF vectorization
-  - Cosine similarity scoring
-  - Skills and experience matching
+## System Components
 
-## Installation
+1. **Resume Parser Agent**: Extracts and analyzes information from resumes using NLP techniques.
+2. **Job Matcher Agent**: Matches candidates with suitable job positions using semantic analysis.
+3. **Interview Scheduler Agent**: Manages interview scheduling and confirmation.
+4. **Candidate Assessor Agent**: Generates technical and behavioral assessments based on job requirements.
 
-1. Clone this repository:
+## Getting Started
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Required Python packages (install via `pip install -r requirements.txt`)
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/ai-recruitment-system.git
+   cd ai-recruitment-system
+   ```
+
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
+#### 1. Generate Job Listings
+
+First, generate sample job listings for testing:
+
 ```bash
-git clone <repository-url>
-cd ai-recruitment-system
+python create_job_listings.py [--output path/to/output.txt] [--company "Company Name"]
 ```
 
-2. Create a virtual environment:
+This will create a file with sample job listings in JSON format.
+
+#### 2. Create a Test Resume (Optional)
+
+You can create a test resume for testing:
+
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+python create_test_resume.py [--output path/to/output.txt]
 ```
 
-3. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
+#### 3. Run the Recruitment System
 
-4. Download the spaCy language model:
-```bash
-python -m spacy download en_core_web_sm
-```
+Run the main application:
 
-## Usage
-
-### Running the System
-
-1. From the project root directory, run:
 ```bash
 python run.py
 ```
 
-2. When prompted, enter the path to a resume file:
+Follow the prompts to:
+- Enter the path to your resume
+- Enter the path to the job listings
+- View job matches
+- Select a job for interview scheduling or assessment
+
+## Example Workflow
+
+1. Parse a candidate's resume to extract structured information
+2. Load available job listings from a company
+3. Match the candidate with suitable positions
+4. Select a job match to either:
+   - Schedule an interview from available time slots
+   - Generate a detailed candidate assessment with questions and coding challenges
+
+## System Architecture
+
+The system is built on the Moya framework, which provides the foundation for creating AI agents. Each component (resume parser, job matcher, interview scheduler, and candidate assessor) is implemented as a Moya agent with specialized tools.
+
 ```
-Enter the path of the resume file: sample_resume.txt
+├── app/
+│   ├── agents/
+│   │   ├── resume_parser.py       # Resume parsing agent
+│   │   ├── job_matcher.py         # Job matching agent
+│   │   ├── interview_scheduler.py # Interview scheduling agent
+│   │   └── candidate_assessor.py  # Candidate assessment agent
+│   └── utils/
+│       └── text_processing.py     # Text processing utilities
+├── create_job_listings.py         # Script to generate job listings
+├── create_test_resume.py          # Script to generate test resumes
+├── run.py                         # Main application
+└── requirements.txt               # Dependencies
 ```
-
-3. The system will:
-   - Parse the resume and extract structured data
-   - Match the candidate with sample job listings
-   - Display the parsed resume information and matching job opportunities
-
-### Sample Files
-
-- `sample_resume.txt`: A sample resume to demonstrate the system's capabilities
-
-## Project Structure
-
-- `app/`: Main application directory
-  - `agents/`: Contains Moya-based agents
-    - `resume_parser.py`: Agent for parsing resumes
-    - `job_matcher.py`: Agent for matching candidates with jobs
-  - `main.py`: Core application logic
-- `run.py`: Entry point for running the application
-- `requirements.txt`: Package dependencies
-
-## Integrating with Moya
-
-This system extends Moya's agent and tool classes:
-
-- `ResumeParserAgent` - Inherits from Moya's `Agent` class
-- `ResumeParserTool` - Inherits from Moya's `BaseTool` class
-- `JobMatchingAgent` - Inherits from Moya's `Agent` class
-- `JobMatchingTool` - Inherits from Moya's `BaseTool` class
-
-Each agent handles the high-level operations, while each tool implements the specific functionality.
-
-## Extending the System
-
-To extend this system:
-
-1. Add new tools by subclassing `BaseTool`
-2. Add new agents by subclassing `Agent`
-3. Register tools with agents as needed
-4. Update the main script to use your new components
-
-## Requirements
-
-- Python 3.8+
-- spaCy and the en_core_web_sm model
-- scikit-learn
-- Moya framework
-- Other dependencies listed in requirements.txt
-
-## Configuration
-
-The system can be configured through environment variables:
-
-- `MOYA_API_KEY`: Your Moya API key
-- `CALENDAR_API_KEY`: API key for calendar integration
-- `ASSESSMENT_PASS_THRESHOLD`: Minimum score to pass assessment (default: 70)
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Built with [Moya Framework](https://github.com/moya/moya)
-- Uses [spaCy](https://spacy.io/) for NLP tasks
-- Employs [scikit-learn](https://scikit-learn.org/) for ML-based matching 
+This project is licensed under the MIT License - see the LICENSE file for details. 
