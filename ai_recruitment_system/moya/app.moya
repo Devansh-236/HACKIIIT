@@ -1,0 +1,24 @@
+<moya app="recruitment">
+    <database url="{db_url}" />
+
+    <service name="resume_parser" module="app.services.resume_parser" />
+    <service name="job_matcher" module="app.services.job_matcher" />
+    <service name="interview_scheduler" module="app.services.interview_scheduler" />
+    <service name="candidate_assessment" module="app.services.candidate_assessment" />
+    <service name="memory_tool" module="app.tools.memory_tool" />
+
+    <function name="process_resume">
+        <call service="resume_parser.parse_resume" args="{'file': 'resume.pdf'}" set="resume_data"/>
+        <call service="job_matcher.match_jobs" args="{'resume_data': resume_data}" set="matched_jobs"/>
+
+        <if test="matched_jobs">
+            <call service="interview_scheduler.schedule_interview" args="{'resume_data': resume_data}" set="interview"/>
+            <call service="candidate_assessment.assess_candidate" args="{'interview': interview}" set="assessment"/>
+            <call service="memory_tool.store_result" args="{'resume': resume_data, 'assessment': assessment}"/>
+        </if>
+    </function>
+
+    <server>
+        <route path="/" call="process_resume" />
+    </server>
+</moya>

@@ -1,0 +1,8 @@
+<moya>
+    <settings>
+        <set name="projectname">AI Recruitment System</set>
+        <set name="db_url">sqlite:///recruitment.db</set>
+    </settings>
+
+    <include src="app.moya" />
+</moya>

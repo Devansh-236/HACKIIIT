@@ -1,0 +1,27 @@
+Bhatia John
+Email: john.doe@example.com
+Phone: (123) 456-7890
+
+SKILLS
+- Python
+- Machine Learning
+- AI
+- Deep Learning
+- JavaScript
+- React
+- Node.js
+
+EXPERIENCE
+Senior Machine Learning Engineer at AI Tech (2020-Present)
+- Developed and deployed ML models
+- Led team of data scientists
+
+Software Developer at Web Solutions (2018-2020)
+- Full-stack development using React and Node.js
+
+EDUCATION
+Master's in Computer Science
+AI University (2016-2018)
+
+Bachelor's in Computer Engineering
+Tech University (2012-2016)

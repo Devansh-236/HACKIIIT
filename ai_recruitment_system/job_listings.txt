@@ -1,0 +1,101 @@
+# Job Listings Generated on: 2025-03-16 03:27:25
+# Format: JSON
+
+[
+  {
+    "title": "Senior Machine Learning Engineer",
+    "company": "AI Innovations Inc",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "tensorflow",
+      "deep learning",
+      "ai"
+    ],
+    "description": "We're looking for an experienced ML engineer to lead the development of cutting-edge AI solutions for our enterprise clients. Experience with TensorFlow and PyTorch required."
+  },
+  {
+    "title": "Full Stack JavaScript Developer",
+    "company": "Web Solutions Ltd",
+    "required_skills": [
+      "javascript",
+      "react",
+      "node.js",
+      "mongodb",
+      "express"
+    ],
+    "description": "Join our team to build modern web applications. You'll work on both frontend with React and backend with Node.js and Express."
+  },
+  {
+    "title": "DevOps Engineer",
+    "company": "Cloud Systems",
+    "required_skills": [
+      "aws",
+      "docker",
+      "kubernetes",
+      "ci/cd",
+      "python"
+    ],
+    "description": "Help us automate and optimize our cloud infrastructure. Experience with AWS, Docker, and Kubernetes is essential."
+  },
+  {
+    "title": "Data Scientist",
+    "company": "Data Analytics Pro",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "statistics",
+      "sql",
+      "data visualization"
+    ],
+    "description": "Analyze complex datasets and build predictive models to drive business decisions."
+  },
+  {
+    "title": "Frontend Developer",
+    "company": "UX Masters",
+    "required_skills": [
+      "javascript",
+      "html",
+      "css",
+      "react",
+      "typescript"
+    ],
+    "description": "Create beautiful and responsive user interfaces for our web applications."
+  },
+  {
+    "title": "Backend Engineer",
+    "company": "Server Systems Inc",
+    "required_skills": [
+      "java",
+      "spring",
+      "sql",
+      "rest api",
+      "microservices"
+    ],
+    "description": "Design and implement scalable backend services and APIs for our enterprise products."
+  },
+  {
+    "title": "Mobile App Developer",
+    "company": "App Creators",
+    "required_skills": [
+      "react native",
+      "javascript",
+      "mobile development",
+      "ios",
+      "android"
+    ],
+    "description": "Develop cross-platform mobile applications using React Native."
+  },
+  {
+    "title": "Database Administrator",
+    "company": "Data Storage Solutions",
+    "required_skills": [
+      "sql",
+      "postgresql",
+      "mongodb",
+      "database optimization",
+      "backup and recovery"
+    ],
+    "description": "Manage and optimize our database systems to ensure high performance and reliability."
+  }
+]
