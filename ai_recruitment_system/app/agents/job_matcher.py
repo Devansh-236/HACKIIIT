@@ -1,126 +1,146 @@
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 from moya.agents.base_agent import Agent, AgentConfig
 from moya.tools.base_tool import BaseTool
-import json
 
 class JobMatchingTool(BaseTool):
-    """Tool for matching candidates with jobs using Azure OpenAI through Moya."""
+    """Tool for matching jobs with candidates using TF-IDF and cosine similarity"""
+    
+    name = "job_matcher"
+    description = "Matches candidates with jobs based on skills and requirements"
+    function = "match_jobs"
     
     def __init__(self):
-        self.name = "job_matcher"
-        self.description = "Matches candidate profiles with job listings using AI"
-        super().__init__(
-            name=self.name,
-            description=self.description,
-            function=self.match_jobs,
-            parameters={
-                "candidate_profile": {
-                    "type": "object",
-                    "description": "The parsed candidate profile"
-                },
-                "job_listings": {
-                    "type": "array",
-                    "description": "List of available job positions"
-                }
-            },
-            required=["candidate_profile", "job_listings"]
-        )
-        
-    def match_jobs(self, candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> str:
-        """
-        Create a prompt for matching jobs using Azure OpenAI through Moya.
+        """Initialize the job matching tool"""
+        super().__init__(name=self.name, function=self.function)
+        self.vectorizer = TfidfVectorizer(lowercase=True, stop_words='english', 
+                                         token_pattern=r'(?u)\b[a-zA-Z][a-zA-Z.+\-]+\b')
+    
+    def match_jobs(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Match a candidate profile with job listings
         
         Args:
-            candidate_profile: The parsed candidate profile
-            job_listings: List of available job positions
-            
+            data: A dictionary containing:
+                - candidate_profile: The parsed candidate profile
+                - job_listings: List of available job positions
+                
         Returns:
-            Prompt for the AI model
+            A list of job matches with similarity scores
         """
-        # Print extracted data
-        print("\n=== Extracted Candidate Data ===")
-        print("Education:")
-        if "education" in candidate_profile:
-            for edu in candidate_profile["education"]:
-                print(f"- {edu.get('degree', 'N/A')} from {edu.get('institution', 'N/A')} ({edu.get('year', 'N/A')})")
-        else:
-            print("No education data found")
-
-        print("\nExperience:")
-        if "experience" in candidate_profile:
-            for exp in candidate_profile["experience"]:
-                print(f"- {exp.get('title', 'N/A')} at {exp.get('company', 'N/A')}")
-                print(f"  Duration: {exp.get('duration', 'N/A')}")
-                if "responsibilities" in exp:
-                    print("  Key responsibilities:")
-                    for resp in exp["responsibilities"]:
-                        print(f"    * {resp}")
-        else:
-            print("No experience data found")
-
-        print("\nSkills:")
-        if "skills" in candidate_profile:
-            for skill in candidate_profile["skills"]:
-                print(f"- {skill}")
-        else:
-            print("No skills data found")
-        print("\n=== End of Extracted Data ===\n")
+        candidate_profile = data.get("candidate_profile", {})
+        job_listings = data.get("job_listings", [])
         
-        # Prepare the prompt for the AI model
-        prompt = f"""You are an expert job matcher. Your task is to match a candidate with suitable job positions.
-
-INSTRUCTIONS:
-1. Analyze the candidate profile carefully
-2. Compare candidate's skills and experience with job requirements
-3. Calculate match scores based on:
-   - Required skills match (highest weight)
-   - Preferred skills match
-   - Experience level alignment
-   - Education requirements
-   - Domain/industry alignment
-4. Return matches in valid JSON format
-5. Score range: 0.0 (no match) to 1.0 (perfect match)
-
-CANDIDATE PROFILE:
-{json.dumps(candidate_profile, indent=2)}
-
-JOB LISTINGS:
-{json.dumps(job_listings, indent=2)}
-
-REQUIRED OUTPUT FORMAT:
-{{
-    "matches": [
-        {{
-            "job_id": "ID of the job",
-            "title": "job title",
-            "company": "company name",
-            "match_score": 0.XX,
-            "match_reasons": [
-                "Reason 1 for match",
-                "Reason 2 for match"
-            ],
-            "missing_requirements": [
-                "Missing requirement 1",
-                "Missing requirement 2"
-            ]
-        }}
-    ]
-}}
-
-IMPORTANT:
-- Sort matches by match_score in descending order
-- Include only jobs with match_score > 0.3
-- Provide specific reasons for each match
-- List any missing critical requirements
-- Return valid JSON only
-- Maximum 5 best matches
-- Focus on skills alignment and experience relevance
-- Consider both technical and soft skills
-- Account for years of experience in the field
-
-Please analyze and return the job matches:"""
+        if not candidate_profile or not job_listings:
+            return {"error": "Missing candidate profile or job listings"}
+            
+        return self._match_jobs(candidate_profile, job_listings)
+    
+    def _match_jobs(self, candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Internal method to perform job matching"""
+        # Create a text representation of the candidate profile
+        skills = candidate_profile.get("skills", [])
         
-        return prompt
+        # Add experience keywords from the candidate's experience
+        experience_text = " ".join(str(candidate_profile.get("experience", [])))
+        experience_keywords = self._extract_keywords_from_text(experience_text)
+        
+        # Combine skills and experience keywords
+        candidate_keywords = skills + experience_keywords
+        candidate_text = " ".join(candidate_keywords)
+        
+        if not candidate_text.strip():
+            # Fallback if no skills or experience are found
+            return []
+        
+        # Create text representations of job listings
+        job_texts = []
+        for job in job_listings:
+            job_text = " ".join(job.get("required_skills", []))
+            job_text += " " + job.get("description", "")
+            job_texts.append(job_text)
+        
+        # Add candidate text to create the complete corpus
+        all_texts = [candidate_text] + job_texts
+        
+        # Calculate TF-IDF vectors
+        tfidf_matrix = self.vectorizer.fit_transform(all_texts)
+        
+        # Calculate similarity between candidate and each job
+        similarities = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:])
+        
+        # Create ranked matches
+        matches = []
+        for idx, score in enumerate(similarities[0]):
+            job_match = {
+                **job_listings[idx],
+                "match_score": float(score)
+            }
+            matches.append(job_match)
+        
+        # Sort by match score in descending order
+        matches.sort(key=lambda x: x["match_score"], reverse=True)
+        
+        return matches
+    
+    def _extract_keywords_from_text(self, text: str) -> List[str]:
+        """Extract important keywords from a text"""
+        # Basic extraction - in a real system, this would use more sophisticated NLP
+        words = text.lower().split()
+        # Filter out short words and common words
+        keywords = [word for word in words if len(word) > 3 and word not in ['and', 'the', 'for', 'with']]
+        return keywords
+    
+    def filter_candidates(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Filter candidates for a job
+        
+        Args:
+            data: A dictionary containing:
+                - job_requirements: Requirements for the job
+                - candidates: List of candidates to filter
+                
+        Returns:
+            A filtered list of candidates with match scores
+        """
+        job_requirements = data.get("job_requirements", {})
+        candidates = data.get("candidates", [])
+        
+        if not job_requirements or not candidates:
+            return {"error": "Missing job requirements or candidates"}
+            
+        # Create a text representation of the job requirements
+        req_skills = job_requirements.get("required_skills", [])
+        req_text = " ".join(req_skills) + " " + job_requirements.get("description", "")
+        
+        # Create text representations of candidates
+        candidate_texts = []
+        for candidate in candidates:
+            skills = candidate.get("skills", [])
+            experience = " ".join(candidate.get("experience", []))
+            candidate_texts.append(" ".join(skills) + " " + experience)
+        
+        # Add job text to create the complete corpus
+        all_texts = [req_text] + candidate_texts
+        
+        # Calculate TF-IDF vectors
+        tfidf_matrix = self.vectorizer.fit_transform(all_texts)
+        
+        # Calculate similarity between job and each candidate
+        similarities = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:])
+        
+        # Create ranked matches
+        matches = []
+        for idx, score in enumerate(similarities[0]):
+            candidate_match = {
+                **candidates[idx],
+                "match_score": float(score)
+            }
+            matches.append(candidate_match)
+        
+        # Sort by match score in descending order
+        matches.sort(key=lambda x: x["match_score"], reverse=True)
+        
+        return matches
 
 
 class JobMatchingAgent(Agent):
@@ -138,29 +158,33 @@ class JobMatchingAgent(Agent):
         super().__init__(config)
         self.matcher_tool = JobMatchingTool()
     
-    async def handle_message(self, message: Dict[str, Any], **kwargs) -> str:
+    async def handle_message(self, message: Dict[str, Any], **kwargs) -> List[Dict[str, Any]]:
         """Handle job matching request
         
         Args:
-            message: Dictionary containing candidate_profile and job_listings
+            message: A dictionary containing:
+                - candidate_profile: The parsed candidate profile 
+                - job_listings: List of available job positions
                 
         Returns:
-            Prompt for the AI model to process
+            A list of job matches with similarity scores
         """
         try:
-            # Extract required arguments from message dictionary
-            candidate_profile = message.get("candidate_profile")
-            job_listings = message.get("job_listings")
-            
-            if not candidate_profile or not job_listings:
-                raise ValueError("Missing required fields: candidate_profile and job_listings must be provided")
+            # Validate the input message
+            if not isinstance(message, dict):
+                return {"error": "Message must be a dictionary"}
                 
-            return self.matcher_tool.match_jobs(
-                candidate_profile=candidate_profile,
-                job_listings=job_listings
-            )
+            if "candidate_profile" not in message:
+                return {"error": "Message must contain candidate_profile"}
+                
+            if "job_listings" not in message:
+                return {"error": "Message must contain job_listings"}
+            
+            # Perform the matching
+            return self.matcher_tool.match_jobs(message)
+            
         except Exception as e:
-            return {"error": f"Failed to create job matching prompt: {str(e)}"}
+            return {"error": f"Failed to match jobs: {str(e)}"}
     
     async def handle_message_stream(self, message: str, **kwargs):
         """Stream is not supported for job matching"""
@@ -168,15 +192,15 @@ class JobMatchingAgent(Agent):
 
 
 # Helper function for standalone use
-async def match_jobs(candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> str:
-    """Create a job matching prompt
+async def match_jobs(candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Match a candidate with job listings
     
     Args:
         candidate_profile: The parsed candidate profile
         job_listings: List of available job positions
         
     Returns:
-        Prompt for the AI model to process
+        A list of job matches with similarity scores
     """
     config = AgentConfig(
         agent_name="job_matcher",

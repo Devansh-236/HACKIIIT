@@ -437,9 +437,6 @@ async def main():
         print(f"Unexpected error: {str(e)}")
         print("Stack trace:")
         traceback.print_exc()
-    finally:
-        # Clean up orchestrator resources
-        orchestrator.cleanup()
 
 if __name__ == "__main__":
     asyncio.run(main())
