@@ -4,6 +4,8 @@ import os
 import sys
 import json
 import traceback
+from pprint import pprint
+from typing import Dict, Any, List
 from datetime import datetime
 
 # Add the project root to the path
@@ -172,17 +174,6 @@ async def generate_candidate_assessment(candidate_profile, job_info, orchestrato
         # Call the orchestrator to generate assessment
         assessment = await orchestrator.generate_assessment(candidate_profile, job_info)
         
-        if "error" in assessment:
-            print(f"Error generating assessment: {assessment['error']}")
-            return None
-        
-        print(f"Generated assessment ID: {assessment.get('assessment_id')}")
-        print(f"Skills assessed: {', '.join(assessment.get('skills_assessed', []))}")
-        print(f"Number of technical questions: {len(assessment.get('technical_questions', []))}")
-        print(f"Number of behavioral questions: {len(assessment.get('behavioral_questions', []))}")
-        if assessment.get('coding_challenge'):
-            print(f"Coding challenge: {assessment.get('coding_challenge', {}).get('title', 'None')}")
-        
         return assessment
         
     except Exception as e:
@@ -287,42 +278,91 @@ def print_job_matches(matches):
         if 'interview_slots' in match and match['interview_slots']:
             print(f"   Available Interview Slots: {len(match['interview_slots'])}")
           
+def print_header(title: str) -> None:
+    """Print a formatted section header"""
+    print(f"\n{'=' * 20} {title} {'=' * 20}")
+
 def print_assessment(assessment):
-    """Display assessment details in a readable format"""
-    if not assessment:
-        print("\nNo assessment generated")
-        return
+    """Display assessment details in a well-formatted structure"""
+    try:
+        # Convert to dictionary if assessment is a string
+        if isinstance(assessment, str):
+            import json
+            try:
+                # First clean the string by removing any potential markdown or extraneous text
+                assessment_str = assessment.strip()
+                
+                # Find JSON content - look for the first { and last }
+                json_start = assessment_str.find('{')
+                json_end = assessment_str.rfind('}') + 1
+                
+                if json_start >= 0 and json_end > json_start:
+                    json_content = assessment_str[json_start:json_end]
+                    assessment = json.loads(json_content)
+                else:
+                    print("Error: Could not locate valid JSON content in the assessment")
+                    return
+            except json.JSONDecodeError as e:
+                print(f"Error: Assessment data is not in valid JSON format: {str(e)}")
+                return
+        
+        # Basic information
+        print("\n==================== BASIC INFORMATION ====================")
+        print(f"Assessment ID: {assessment.get('assessment_id')}")
+        print(f"Candidate: {assessment.get('candidate_name')}")
+        print(f"Position: {assessment.get('job_title')} at {assessment.get('company')}")
+        print(f"Skills Assessed: {', '.join(assessment.get('skills_assessed', []))}")
+        
+        # Technical questions
+        if 'technical_questions' in assessment:
+            print("\n==================== TECHNICAL QUESTIONS ====================")
+            for i, q in enumerate(assessment['technical_questions'], 1):
+                print(f"{i}. [{q.get('skill')}] {q.get('question')}")
+                print(f"   Question ID: {q.get('question_id')}")
+                print()
+        
+        # Behavioral questions
+        if 'behavioral_questions' in assessment:
+            print("\n==================== BEHAVIORAL QUESTIONS ====================")
+            for i, q in enumerate(assessment['behavioral_questions'], 1):
+                print(f"{i}. {q.get('question')}")
+                print(f"   Question ID: {q.get('question_id')}")
+                print()
+        
+        # Coding challenge
+        if 'coding_challenge' in assessment:
+            print("\n==================== CODING CHALLENGE ====================")
+            challenge = assessment['coding_challenge']
+            print(f"Title: {challenge.get('title')}")
+            print(f"Description: {challenge.get('description')}")
+            print(f"Language: {challenge.get('language')}")
+            print(f"Time Limit: {challenge.get('time_limit')}")
+            
+            print("\nRequirements:")
+            for i, req in enumerate(challenge.get('requirements', []), 1):
+                print(f"  {i}. {req}")
+        
+        # Evaluation criteria
+        if 'evaluation_criteria' in assessment:
+            print("\n==================== EVALUATION CRITERIA ====================")
+            for criterion, description in assessment['evaluation_criteria'].items():
+                print(f"• {criterion.replace('_', ' ').title()}: {description}")
+        
+        # Scoring guide
+        if 'scoring_guide' in assessment:
+            print("\n==================== SCORING GUIDE ====================")
+            for score, description in assessment['scoring_guide'].items():
+                print(f"{score}: {description}")
+            
+            print(f"\nPassing Threshold: {assessment.get('passing_threshold')}%")
+        
+        print(f"\nAssessment Created: {assessment.get('created_at')}")
     
-    print("\n=== ASSESSMENT DETAILS ===")
-    print(f"Assessment ID: {assessment.get('assessment_id')}")
-    print(f"For: {assessment.get('candidate_name')} - {assessment.get('job_title')} at {assessment.get('company')}")
-    
-    # Technical questions
-    print("\nTechnical Questions:")
-    for q in assessment.get('technical_questions', []):
-        print(f"- [{q.get('skill', 'general')}] {q.get('question')}")
-    
-    # Behavioral questions
-    print("\nBehavioral Questions:")
-    for q in assessment.get('behavioral_questions', []):
-        print(f"- {q.get('question')}")
-    
-    # Coding challenge
-    if assessment.get('coding_challenge'):
-        challenge = assessment.get('coding_challenge')
-        print("\nCoding Challenge:")
-        print(f"Title: {challenge.get('title')}")
-        print(f"Description: {challenge.get('description')}")
-        print(f"Language: {challenge.get('language')}")
-        print(f"Time Limit: {challenge.get('time_limit')}")
-        print("\nRequirements:")
-        for req in challenge.get('requirements', []):
-            print(f"- {req}")
-    
-    # Evaluation criteria
-    print("\nEvaluation Criteria:")
-    for area, description in assessment.get('evaluation_criteria', {}).items():
-        print(f"- {area.title()}: {description}")
+    except Exception as e:
+        print(f"Error displaying assessment: {str(e)}")
+        import traceback
+        traceback.print_exc()
+
 
 async def automated_recruitment_process(candidate_profile, job_listings, orchestrator):
     """Automated recruitment process using the orchestrator"""
@@ -437,6 +477,9 @@ async def main():
         print(f"Unexpected error: {str(e)}")
         print("Stack trace:")
         traceback.print_exc()
+    finally:
+        # Clean up resources
+        orchestrator.cleanup()
 
 if __name__ == "__main__":
     asyncio.run(main())
