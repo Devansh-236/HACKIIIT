@@ -1,0 +1,47 @@
+Bhai Jaan Email: Bhai.Jaan@example.com | Phone: (123) 456-7890 | LinkedIn: linkedin.com/in/BhaiJaan | GitHub: github.com/BhaiJaan
+
+Machine Learning Engineer
+
+SUMMARY
+
+Passionate Machine Learning Engineer with expertise in deep learning, NLP, and computer vision. Experienced in deploying AI models and working with large datasets for real-world applications.
+
+SKILLS
+
+Machine Learning & AI: TensorFlow, PyTorch, Scikit-learn, NLP, Computer Vision
+
+Programming Languages: Python, R, C++
+
+Data Engineering: Pandas, NumPy, Spark, SQL
+
+Cloud & Deployment: AWS SageMaker, Docker, Flask, FastAPI
+
+MLOps & Tools: MLflow, Kubernetes, TensorBoard
+
+EXPERIENCE
+
+Machine Learning EngineerAI Innovations | 2023 - Present
+
+Developed NLP models for text classification and sentiment analysis, improving accuracy by 15%.
+
+Implemented CNN-based image classification pipelines, achieving 97% accuracy.
+
+Built and deployed ML models using Flask and FastAPI on AWS.
+
+Optimized deep learning model performance by hyperparameter tuning and data augmentation.
+
+EDUCATION
+
+Master’s in Data ScienceTech University | 2019 - 2023
+
+PROJECTS
+
+Handwriting Recognition: Created a CNN-based OCR model for digit recognition with 98% accuracy.
+
+Stock Price Prediction: Developed an LSTM model to predict stock trends based on historical data.
+
+CERTIFICATIONS
+
+Google TensorFlow Developer Certificate (2023)
+
+AWS Machine Learning Specialty (2023)

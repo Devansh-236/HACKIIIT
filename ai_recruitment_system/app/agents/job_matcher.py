@@ -1,4 +1,6 @@
 from typing import Dict, List, Any, Optional
+import json
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from moya.agents.base_agent import Agent, AgentConfig
@@ -16,6 +18,11 @@ class JobMatchingTool(BaseTool):
         super().__init__(name=self.name, function=self.function)
         self.vectorizer = TfidfVectorizer(lowercase=True, stop_words='english', 
                                          token_pattern=r'(?u)\b[a-zA-Z][a-zA-Z.+\-]+\b')
+        # Default job database path
+        self.job_database_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+            'data', 'job_listings.json'
+        )
     
     def match_jobs(self, data: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Match a candidate profile with job listings
@@ -35,6 +42,64 @@ class JobMatchingTool(BaseTool):
             return {"error": "Missing candidate profile or job listings"}
             
         return self._match_jobs(candidate_profile, job_listings)
+    
+    def get_all_jobs(self, database_path: str = None) -> List[Dict[str, Any]]:
+        """Retrieve all available jobs from the database
+        
+        Args:
+            database_path: Optional path to the job listings JSON file.
+                          If not provided, uses the default path.
+                
+        Returns:
+            A list of all available job positions
+        """
+        try:
+            # Use provided path or fall back to default
+            file_path = database_path or self.job_database_path
+            
+            # Check if file exists
+            if not os.path.exists(file_path):
+                return {"error": f"Job database not found at: {file_path}"}
+            
+            # Read and parse the job listings
+            with open(file_path, 'r', encoding='utf-8') as file:
+                job_data = json.load(file)
+                
+                # Handle different possible structures
+                if isinstance(job_data, list):
+                    return job_data
+                elif isinstance(job_data, dict) and "jobs" in job_data:
+                    return job_data["jobs"]
+                else:
+                    return {"error": "Invalid job database format"}
+                
+        except json.JSONDecodeError:
+            return {"error": "Job database contains invalid JSON"}
+        except Exception as e:
+            return {"error": f"Failed to retrieve jobs: {str(e)}"}
+    
+    def get_job_by_id(self, job_id: str, database_path: str = None) -> Dict[str, Any]:
+        """Retrieve a specific job by ID
+        
+        Args:
+            job_id: The unique identifier of the job
+            database_path: Optional path to the job listings JSON file
+                
+        Returns:
+            The job information if found, otherwise an error
+        """
+        jobs = self.get_all_jobs(database_path)
+        
+        # Check if we got an error
+        if isinstance(jobs, dict) and "error" in jobs:
+            return jobs
+        
+        # Find job by ID
+        for job in jobs:
+            if job.get("id") == job_id or job.get("job_id") == job_id:
+                return job
+                
+        return {"error": f"Job with ID {job_id} not found"}
     
     def _match_jobs(self, candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Internal method to perform job matching"""
@@ -165,33 +230,54 @@ class JobMatchingAgent(Agent):
             message: A dictionary containing:
                 - candidate_profile: The parsed candidate profile 
                 - job_listings: List of available job positions
+                - action: Optional action to perform ('match_jobs', 'get_all_jobs', 'get_job_by_id')
+                - job_id: Required for 'get_job_by_id' action
                 
         Returns:
-            A list of job matches with similarity scores
+            A list of job matches with similarity scores or job information based on the action
         """
         try:
-            # Validate the input message
-            if not isinstance(message, dict):
-                return {"error": "Message must be a dictionary"}
-                
-            if "candidate_profile" not in message:
-                return {"error": "Message must contain candidate_profile"}
-                
-            if "job_listings" not in message:
-                return {"error": "Message must contain job_listings"}
+            # Check if this is a special action request
+            action = message.get("action", "match_jobs")
             
-            # Perform the matching
-            return self.matcher_tool.match_jobs(message)
+            if action == "get_all_jobs":
+                # Return all available jobs
+                database_path = message.get("database_path")
+                return self.matcher_tool.get_all_jobs(database_path)
+                
+            elif action == "get_job_by_id":
+                # Get a specific job by ID
+                job_id = message.get("job_id")
+                if not job_id:
+                    return {"error": "job_id is required for get_job_by_id action"}
+                
+                database_path = message.get("database_path")
+                return self.matcher_tool.get_job_by_id(job_id, database_path)
+                
+            else:
+                # Default: perform job matching
+                # Validate the input message
+                if not isinstance(message, dict):
+                    return {"error": "Message must be a dictionary"}
+                    
+                if "candidate_profile" not in message:
+                    return {"error": "Message must contain candidate_profile"}
+                    
+                if "job_listings" not in message:
+                    return {"error": "Message must contain job_listings"}
+                
+                # Perform the matching
+                return self.matcher_tool.match_jobs(message)
             
         except Exception as e:
-            return {"error": f"Failed to match jobs: {str(e)}"}
+            return {"error": f"Failed to process request: {str(e)}"}
     
     async def handle_message_stream(self, message: str, **kwargs):
         """Stream is not supported for job matching"""
         yield "Streaming is not supported for job matching. Please use handle_message instead."
 
 
-# Helper function for standalone use
+# Helper functions for standalone use
 async def match_jobs(candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Match a candidate with job listings
     
@@ -214,3 +300,28 @@ async def match_jobs(candidate_profile: Dict[str, Any], job_listings: List[Dict[
         "candidate_profile": candidate_profile,
         "job_listings": job_listings
     })
+
+async def get_all_jobs(database_path: str = None) -> List[Dict[str, Any]]:
+    """Get all available jobs from the database
+    
+    Args:
+        database_path: Optional path to the job database
+        
+    Returns:
+        A list of all available job positions
+    """
+    tool = JobMatchingTool()
+    return tool.get_all_jobs(database_path)
+
+async def get_job_by_id(job_id: str, database_path: str = None) -> Dict[str, Any]:
+    """Get a specific job by ID
+    
+    Args:
+        job_id: The unique identifier of the job
+        database_path: Optional path to the job database
+        
+    Returns:
+        The job information if found
+    """
+    tool = JobMatchingTool()
+    return tool.get_job_by_id(job_id, database_path)

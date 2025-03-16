@@ -1,0 +1,44 @@
+Robert Martinez
+567 Cloud Drive, Atlanta, GA 30309
+robert.martinez@email.com
+(404) 555-8765
+
+SUMMARY
+Cloud Solutions Architect with 8+ years of experience designing and implementing scalable, secure, and cost-effective cloud infrastructures. Expert in AWS, Azure, and GCP with a strong background in infrastructure as code, containerization, and microservices architecture. Proven track record of leading successful cloud migrations and optimizing cloud resources for enterprise clients.
+
+SKILLS
+AWS (EC2, S3, Lambda, ECS, EKS, RDS, DynamoDB, CloudFormation), Azure (VMs, App Service, AKS, Cosmos DB, Azure Functions), GCP (Compute Engine, GKE, Cloud Storage, BigQuery), Terraform, CloudFormation, Kubernetes, Docker, Infrastructure as Code, Microservices, Serverless Architecture, CI/CD, Jenkins, GitHub Actions, Networking, VPC, Security, IAM, Python, Bash, Go, Monitoring, Prometheus, Grafana, Cost Optimization, Disaster Recovery, High Availability
+
+EXPERIENCE
+Senior Cloud Architect, CloudTech Solutions (2019-Present)
+- Led cloud architecture design and implementation for 15+ enterprise clients across various industries
+- Designed and implemented multi-region, highly available architectures with 99.99% uptime SLAs
+- Reduced cloud infrastructure costs by 35% through resource optimization and reserved instance planning
+- Implemented infrastructure as code using Terraform, achieving 100% automation of cloud deployments
+- Designed and implemented secure cloud environments compliant with SOC2, HIPAA, and PCI-DSS standards
+- Mentored junior architects and engineers on cloud best practices and architecture patterns
+
+Cloud Solutions Engineer, Enterprise Cloud Services (2016-2019)
+- Architected and implemented hybrid cloud solutions for financial services clients
+- Migrated legacy applications to cloud-native architectures, reducing operational costs by 40%
+- Designed and implemented CI/CD pipelines for automated infrastructure deployment
+- Created disaster recovery and business continuity solutions with RPO < 15 minutes and RTO < 1 hour
+- Performed security assessments and implemented remediation strategies for cloud environments
+
+Systems Engineer, Global IT Solutions (2014-2016)
+- Managed on-premises infrastructure including virtualization, storage, and networking
+- Implemented initial cloud adoption strategies for dev/test environments
+- Automated routine system administration tasks using Python and PowerShell
+- Supported 24/7 operations for critical business applications
+
+EDUCATION
+M.S. in Computer Science, Georgia Institute of Technology (2014)
+B.S. in Information Technology, University of Georgia (2012)
+
+CERTIFICATIONS
+- AWS Certified Solutions Architect - Professional
+- Microsoft Certified: Azure Solutions Architect Expert
+- Google Cloud Certified - Professional Cloud Architect
+- Certified Kubernetes Administrator (CKA)
+- HashiCorp Certified: Terraform Associate
+- Certified Information Systems Security Professional (CISSP) 

@@ -1,0 +1,44 @@
+Jennifer Kim
+789 Testing Lane, Portland, OR 97201
+jennifer.kim@email.com
+(503) 555-3456
+
+SUMMARY
+Senior QA Automation Engineer with 6 years of experience in designing and implementing comprehensive test automation frameworks. Expertise in web, mobile, and API testing with a focus on continuous integration and delivery. Passionate about ensuring software quality through efficient and effective testing methodologies.
+
+SKILLS
+Test Automation, Selenium WebDriver, Appium, REST API Testing, Postman, Python, Java, JavaScript, TestNG, JUnit, Pytest, Cucumber, BDD, TDD, CI/CD, Jenkins, GitHub Actions, CircleCI, Docker, Performance Testing, JMeter, Gatling, Security Testing, OWASP ZAP, SQL, MongoDB, JIRA, TestRail, Agile/Scrum, Test Planning, Test Strategy, Defect Management, Root Cause Analysis
+
+EXPERIENCE
+Senior QA Automation Engineer, Quality Software Inc. (2020-Present)
+- Designed and implemented a comprehensive test automation framework using Python, Selenium, and Pytest, achieving 80% test coverage
+- Reduced regression testing time by 70% through efficient test automation and parallel execution
+- Implemented API testing framework using Python requests library and Postman, covering 100% of critical endpoints
+- Set up CI/CD pipelines in Jenkins and GitHub Actions for continuous testing integration
+- Conducted performance testing using JMeter, identifying and resolving bottlenecks that improved response times by 40%
+- Mentored junior QA engineers and established best practices for the QA team
+
+QA Automation Engineer, Tech Solutions Corp. (2018-2020)
+- Developed and maintained automated test suites for web and mobile applications
+- Implemented BDD framework using Cucumber and Selenium, improving collaboration with business analysts
+- Created and executed test plans for new features and regression testing
+- Performed API testing using Postman and integrated tests into CI pipeline
+- Collaborated with developers to implement unit tests and improve code quality
+- Reduced manual testing effort by 60% through strategic test automation
+
+QA Analyst, StartUp Technologies (2016-2018)
+- Executed manual test cases for web applications and documented defects
+- Designed test cases based on user stories and requirements
+- Participated in daily stand-ups and sprint planning meetings
+- Implemented initial automation scripts using Selenium WebDriver
+- Performed exploratory testing to identify edge cases and usability issues
+
+EDUCATION
+B.S. in Computer Science, Oregon State University (2016)
+
+CERTIFICATIONS
+- ISTQB Certified Tester - Advanced Level Test Automation Engineer
+- Certified Selenium Professional
+- AWS Certified Developer - Associate
+- Certified Scrum Master (CSM)
+- ISTQB Certified Tester - Foundation Level 

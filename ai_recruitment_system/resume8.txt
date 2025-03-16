@@ -1,0 +1,38 @@
+David Rodriguez
+123 Tech Street, Austin, TX 78701
+david.rodriguez@email.com
+(512) 555-9876
+
+SUMMARY
+Software Engineer with 7 years of experience building scalable web applications and microservices. Skilled in full-stack development with expertise in Java, Python, and JavaScript frameworks. Passionate about clean code, continuous integration, and delivering high-quality software solutions.
+
+SKILLS
+Java, Spring Boot, Python, Django, JavaScript, React, Node.js, TypeScript, HTML/CSS, SQL, MongoDB, Redis, AWS, Docker, Kubernetes, Jenkins, Git, RESTful APIs, GraphQL, Microservices, Test-Driven Development, CI/CD, Agile/Scrum
+
+EXPERIENCE
+Senior Software Engineer, TechCorp Solutions (2018-Present)
+- Architected and implemented a microservices-based platform that processes over 500,000 transactions daily
+- Led the migration from monolithic architecture to containerized microservices using Docker and Kubernetes
+- Implemented CI/CD pipelines that reduced deployment time by 75% and improved code quality
+- Mentored junior developers and conducted technical interviews for new hires
+
+Software Engineer, WebApps Inc. (2016-2018)
+- Developed RESTful APIs and backend services for a social media platform with 1M+ users
+- Implemented real-time notification system using WebSockets and Redis
+- Optimized database queries resulting in 60% faster page load times
+- Collaborated with UX designers to implement responsive frontend components using React
+
+Junior Developer, StartupTech (2014-2016)
+- Built and maintained web applications using Python and Django
+- Implemented frontend features using JavaScript and jQuery
+- Participated in daily standups and sprint planning sessions
+- Fixed bugs and performed code reviews
+
+EDUCATION
+Master of Science in Computer Science, University of Texas at Austin (2014)
+Bachelor of Science in Software Engineering, Texas A&M University (2012)
+
+CERTIFICATIONS
+AWS Certified Developer - Associate
+Oracle Certified Professional, Java SE 11 Developer
+Certified Kubernetes Administrator (CKA) 

@@ -325,6 +325,7 @@ class RecruitmentOrchestrator:
                 content=response
             )
             
+
             return response
         except Exception as e:
             print(f"Error in assessment generation: {str(e)}")

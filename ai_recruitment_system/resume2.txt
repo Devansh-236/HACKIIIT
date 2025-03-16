@@ -1,0 +1,47 @@
+John DoeEmail: john.doe@example.com | Phone: (123) 456-7890 | LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe
+
+Software Engineer
+
+SUMMARY
+
+Detail-oriented Software Engineer with 1 year of experience in full-stack development. Skilled in designing scalable applications using Python, JavaScript, and cloud technologies. Strong understanding of data structures, algorithms, and DevOps best practices.
+
+SKILLS
+
+Programming Languages: Python, Java, JavaScript, C++
+
+Web Development: React.js, Next.js, Node.js, Express.js
+
+Databases: PostgreSQL, MongoDB, Firebase
+
+Cloud & DevOps: AWS, Docker, Kubernetes, CI/CD pipelines
+
+Tools & Frameworks: Git, Jenkins, FastAPI, Flask
+
+EXPERIENCE
+
+Software EngineerXYZ Technologies | 2023 - Present
+
+Developed scalable microservices using FastAPI and Docker, improving system efficiency.
+
+Built dynamic web applications using React.js and Node.js, enhancing user experience.
+
+Designed RESTful APIs and optimized database queries for high-performance applications.
+
+Deployed applications on AWS, implementing CI/CD workflows with Jenkins.
+
+EDUCATION
+
+Bachelor’s in Computer ScienceTech University | 2019 - 2023
+
+PROJECTS
+
+Task Management App: Built a React and Node.js-based task tracker with real-time updates.
+
+IoT Smart Home System: Developed an IoT-based home automation system using Raspberry Pi and Firebase.
+
+CERTIFICATIONS
+
+AWS Certified Developer Associate (2023)
+
+Kubernetes Administrator Certification (2023)

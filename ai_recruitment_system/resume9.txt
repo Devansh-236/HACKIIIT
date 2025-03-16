@@ -1,0 +1,38 @@
+Sarah Johnson
+456 Design Avenue, Palo Alto, CA 94301
+sarah.johnson@email.com
+(650) 555-7890
+
+SUMMARY
+UX/UI Designer with 8 years of experience creating intuitive, engaging digital experiences across mobile and web platforms. Passionate about user-centered design with expertise in research, wireframing, prototyping, and usability testing. Skilled in translating business requirements into elegant design solutions.
+
+SKILLS
+Figma, Adobe XD, Sketch, InVision, Zeplin, HTML/CSS, JavaScript, Prototyping, Wireframing, User Research, Usability Testing, Information Architecture, Responsive Design, Design Systems, Accessibility, UI Animation, Design Thinking, User Personas, Journey Mapping
+
+EXPERIENCE
+Senior UX Designer, DesignHub Inc. (2019-Present)
+- Led the redesign of the company's flagship product, resulting in a 35% increase in user engagement
+- Conducted user research and usability testing to inform design decisions across multiple products
+- Created and maintained a comprehensive design system used by 5 product teams
+- Mentored junior designers and collaborated with product managers and engineers
+
+UX/UI Designer, Creative Digital Agency (2016-2019)
+- Designed responsive web and mobile interfaces for clients across finance, healthcare, and e-commerce
+- Created user flows, wireframes, prototypes, and high-fidelity mockups for 15+ client projects
+- Facilitated design workshops and presented concepts to stakeholders
+- Collaborated with developers to ensure design implementation matched specifications
+
+Web Designer, StartUp Solutions (2014-2016)
+- Designed website interfaces for technology startups
+- Created visual assets including icons, illustrations, and marketing materials
+- Implemented responsive designs using HTML/CSS
+- Contributed to brand identity development for early-stage companies
+
+EDUCATION
+Master of Fine Arts in Interaction Design, California College of the Arts (2014)
+Bachelor of Arts in Graphic Design, Rhode Island School of Design (2012)
+
+CERTIFICATIONS
+Certified User Experience Professional (CUXP)
+Interaction Design Foundation Certification
+Accessibility for Web Design (Nielsen Norman Group) 
