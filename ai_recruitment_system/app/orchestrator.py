@@ -69,12 +69,16 @@ class RecruitmentOrchestrator:
             description=job_matching_tool.description,
             function=job_matching_tool.match_jobs,
             parameters={
-                "data": {
+                "candidate_profile": {
                     "type": "object",
-                    "description": "Object containing candidate_profile and job_listings."
+                    "description": "The parsed candidate profile containing skills, experience, etc."
+                },
+                "job_listings": {
+                    "type": "array",
+                    "description": "List of available job positions to match against."
                 }
             },
-            required=["data"]
+            required=["candidate_profile", "job_listings"]
         ))
         
         tool_registry.register_tool(BaseTool(
@@ -138,7 +142,7 @@ class RecruitmentOrchestrator:
         return orchestrator, agent_registry
     
     async def process_resume(self, resume_text: str):
-        """Process a resume using direct tool call instead of orchestrator
+        """Process a resume using Azure OpenAI through Moya
         
         Args:
             resume_text: The text content of the resume
@@ -146,34 +150,76 @@ class RecruitmentOrchestrator:
         Returns:
             The parsed resume data
         """
-        print("Directly parsing resume with ResumeParserTool...")
+        print("Processing resume with Azure OpenAI...")
         try:
-            # Call the parser tool directly rather than using the orchestrator
-            parsed_data = self.resume_parser.parse_resume(resume_text)
-            print(f"Resume parsing complete. Extracted {len(parsed_data.get('skills', []))} skills.")
-            return parsed_data
-        except Exception as e:
-            print(f"Error in direct resume parsing: {str(e)}")
-            traceback.print_exc()
+            # Store the resume in memory
+            EphemeralMemory.store_message(
+                thread_id=self.thread_id,
+                sender="user",
+                content=resume_text
+            )
             
-            # Create a fallback resume structure
-            return {
-                "name": "John Doe (Auto-generated)",
-                "contact_info": {
-                    "email": "john.doe@example.com",
-                    "phone": "555-123-4567"
-                },
-                "skills": ["Python", "JavaScript", "Machine Learning", "Data Analysis", "Communication"],
-                "education": [
-                    "Bachelor of Science in Computer Science, Example University (2015-2019)"
-                ],
-                "experience": [
-                    "Software Developer at Tech Corp (2019-2022)"
-                ]
-            }
+            # Get the prompt from the resume parser tool
+            prompt = self.resume_parser.parse_resume(resume_text)
+            
+            # Use the orchestrator to process the resume with Azure OpenAI
+            response = self.orchestrator.orchestrate(
+                thread_id=self.thread_id,
+                user_message=prompt,
+                system_message="""You are an expert resume parser AI. Your task is to extract structured information from resumes and return it in valid JSON format. 
+                Focus only on extracting and structuring the information. Do not include any additional text or explanations in your response."""
+            )
+            
+            # Clean the response to ensure we only have JSON
+            response = response.strip()
+            # Remove any markdown code block indicators if present
+            response = response.replace('```json', '').replace('```', '').strip()
+            
+            # Store the parsed result
+            EphemeralMemory.store_message(
+                thread_id=self.thread_id,
+                sender="assistant",
+                content=response
+            )
+            
+            # Convert response to structured data
+            try:
+                parsed_data = json.loads(response)
+                
+                # Validate the parsed data has required fields
+                required_fields = ["name", "contact_info", "skills", "experience", "education"]
+                missing_fields = [field for field in required_fields if field not in parsed_data]
+                
+                if missing_fields:
+                    print(f"Warning: Missing required fields: {', '.join(missing_fields)}")
+                    # Add empty structures for missing fields
+                    for field in missing_fields:
+                        if field == "contact_info":
+                            parsed_data[field] = {"email": "N/A", "phone": "N/A", "location": "N/A"}
+                        elif field in ["skills", "experience", "education"]:
+                            parsed_data[field] = []
+                        else:
+                            parsed_data[field] = "N/A"
+                
+                print(f"Successfully parsed resume for: {parsed_data.get('name', 'Unknown')}")
+                print(f"Found {len(parsed_data.get('skills', []))} skills")
+                print(f"Found {len(parsed_data.get('experience', []))} experience entries")
+                print(f"Found {len(parsed_data.get('education', []))} education entries")
+                
+                return parsed_data
+                
+            except json.JSONDecodeError as e:
+                print(f"Error: Could not parse JSON response: {str(e)}")
+                print("Raw response:", response)
+                return {"error": "Failed to parse resume data", "raw_response": response}
+                
+        except Exception as e:
+            print(f"Error in resume processing: {str(e)}")
+            traceback.print_exc()
+            return {"error": str(e)}
     
     async def match_with_jobs(self, candidate_profile: Dict[str, Any], job_listings: List[Dict[str, Any]]):
-        """Match a candidate with job listings using direct tool call
+        """Match a candidate with job listings using Azure OpenAI through Moya
         
         Args:
             candidate_profile: The parsed candidate profile
@@ -182,43 +228,88 @@ class RecruitmentOrchestrator:
         Returns:
             List of job matches with similarity scores
         """
-        print("Directly matching jobs with JobMatchingTool...")
+        print("Processing job matches with Azure OpenAI...")
         try:
-            # Call the job matcher tool directly
-            data = {
-                "candidate_profile": candidate_profile,
-                "job_listings": job_listings
-            }
-            matches = self.job_matcher.match_jobs(data)
-            print(f"Job matching complete. Found {len(matches)} potential matches.")
-            return matches
-        except Exception as e:
-            print(f"Error in direct job matching: {str(e)}")
-            traceback.print_exc()
+            # Store the matching request in memory
+            EphemeralMemory.store_message(
+                thread_id=self.thread_id,
+                sender="user",
+                content=f"Matching candidate with {len(job_listings)} jobs"
+            )
             
-            # Create fallback job matches
-            return [
-                {
-                    "title": "Software Engineer",
-                    "company": "TechCorp",
-                    "match_score": 0.85,
-                    "department": "Engineering",
-                    "location": "San Francisco, CA",
-                    "experience_level": "Mid-level",
-                    "required_skills": ["Python", "JavaScript", "React"],
-                    "preferred_skills": ["AWS", "Docker", "TypeScript"]
-                },
-                {
-                    "title": "Data Scientist",
-                    "company": "DataInsights",
-                    "match_score": 0.78,
-                    "department": "Analytics",
-                    "location": "New York, NY",
-                    "experience_level": "Senior",
-                    "required_skills": ["Python", "Machine Learning", "SQL"],
-                    "preferred_skills": ["TensorFlow", "PyTorch", "Big Data"]
-                }
-            ]
+            # Get the prompt from the job matcher tool
+            prompt = self.job_matcher.match_jobs(
+                candidate_profile=candidate_profile,
+                job_listings=job_listings
+            )
+            
+            # Use the orchestrator to process the job matching with Azure OpenAI
+            response = await self.orchestrator.orchestrate(
+                thread_id=self.thread_id,
+                user_message=prompt,
+                system_message="""You are an expert job matching AI. Your task is to match candidates with job positions and return results in valid JSON format.
+                Focus only on analyzing the match and structuring the information. Do not include any additional text or explanations in your response.
+                Ensure all matches are properly scored and sorted."""
+            )
+            
+            # Clean the response to ensure we only have JSON
+            response = response.strip()
+            # Remove any markdown code block indicators if present
+            response = response.replace('```json', '').replace('```', '').strip()
+            
+            # Store the matches result
+            EphemeralMemory.store_message(
+                thread_id=self.thread_id,
+                sender="assistant",
+                content=response
+            )
+            
+            # Convert response to structured data
+            try:
+                parsed_data = json.loads(response)
+                matches = parsed_data.get("matches", [])
+                
+                if not matches:
+                    print("No suitable job matches found")
+                    return []
+                    
+                print(f"\n=== Found {len(matches)} Job Matches ===")
+                for match in matches:
+                    print(f"\nPosition: {match.get('title')} at {match.get('company')}")
+                    print(f"Match Score: {match.get('match_score', 0):.2f}")
+                    if "match_reasons" in match:
+                        print("Match Reasons:")
+                        for reason in match["match_reasons"]:
+                            print(f"  + {reason}")
+                    if "missing_requirements" in match:
+                        print("Missing Requirements:")
+                        for req in match["missing_requirements"]:
+                            print(f"  - {req}")
+                print("\n=== End of Job Matches ===\n")
+                
+                return matches
+                
+            except json.JSONDecodeError as e:
+                print(f"Error: Could not parse JSON response: {str(e)}")
+                print("Raw response:", response)
+                # Try to clean up the response and parse again
+                try:
+                    # Remove any non-JSON text
+                    json_start = response.find('{')
+                    json_end = response.rfind('}') + 1
+                    if json_start >= 0 and json_end > json_start:
+                        cleaned_response = response[json_start:json_end]
+                        parsed_data = json.loads(cleaned_response)
+                        print("Successfully parsed cleaned response")
+                        return parsed_data.get("matches", [])
+                except:
+                    pass
+                return {"error": "Failed to parse job matches", "raw_response": response}
+                
+        except Exception as e:
+            print(f"Error in job matching: {str(e)}")
+            traceback.print_exc()
+            return {"error": str(e)}
     
     async def generate_assessment(self, candidate_profile: Dict[str, Any], job_info: Dict[str, Any]):
         """Generate an assessment using direct tool call
