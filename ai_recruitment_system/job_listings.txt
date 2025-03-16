@@ -1,0 +1,892 @@
+# Job Listings for TechNova Innovations
+# Generated on: 2025-03-16 15:59:14
+# Format: JSON
+
+[
+  {
+    "job_id": "JOB-ML-001",
+    "title": "Senior Machine Learning Engineer",
+    "company": "TechNova Innovations",
+    "department": "Artificial Intelligence",
+    "location": "San Francisco, CA (Remote Option)",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "tensorflow",
+      "deep learning",
+      "ai"
+    ],
+    "preferred_skills": [
+      "pytorch",
+      "kubernetes",
+      "mlops",
+      "computer vision"
+    ],
+    "experience_level": "5+ years",
+    "description": "Lead the development of cutting-edge AI solutions for our enterprise clients. You'll design and implement machine learning models and collaborate with cross-functional teams.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "12:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "16:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "09:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "12:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "14:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "13:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "10:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "15:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "16:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "10:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "09:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "09:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-FS-002",
+    "title": "Full Stack JavaScript Developer",
+    "company": "TechNova Innovations",
+    "department": "Web Development",
+    "location": "Austin, TX (Hybrid)",
+    "required_skills": [
+      "javascript",
+      "react",
+      "node.js",
+      "mongodb",
+      "express"
+    ],
+    "preferred_skills": [
+      "typescript",
+      "redis",
+      "aws",
+      "graphql"
+    ],
+    "experience_level": "3+ years",
+    "description": "Join our web development team to build modern applications. You'll work on both frontend with React and backend with Node.js and Express.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "15:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "10:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "15:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "09:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "14:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "12:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "10:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "16:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Branch Office Conference Room"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-DEV-003",
+    "title": "DevOps Engineer",
+    "company": "TechNova Innovations",
+    "department": "Infrastructure",
+    "location": "Seattle, WA (On-site)",
+    "required_skills": [
+      "aws",
+      "docker",
+      "kubernetes",
+      "ci/cd",
+      "python"
+    ],
+    "preferred_skills": [
+      "terraform",
+      "ansible",
+      "prometheus",
+      "grafana"
+    ],
+    "experience_level": "4+ years",
+    "description": "Automate and optimize our cloud infrastructure. You'll implement CI/CD pipelines and maintain our container orchestration platform.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "11:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "10:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "12:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "15:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "16:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "09:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "12:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "10:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "09:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "12:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "12:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "10:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-DS-004",
+    "title": "Data Scientist",
+    "company": "TechNova Innovations",
+    "department": "Data Analytics",
+    "location": "Boston, MA (Remote Option)",
+    "required_skills": [
+      "python",
+      "machine learning",
+      "statistics",
+      "sql",
+      "data visualization"
+    ],
+    "preferred_skills": [
+      "r",
+      "tableau",
+      "spark",
+      "hadoop",
+      "big data"
+    ],
+    "experience_level": "3+ years",
+    "description": "Analyze complex datasets and build predictive models to drive business decisions. You'll work with stakeholders to identify opportunities for data-driven solutions.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "14:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "11:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "09:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "14:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "16:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "09:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "14:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "13:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "11:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-FE-005",
+    "title": "Frontend Developer",
+    "company": "TechNova Innovations",
+    "department": "User Experience",
+    "location": "New York, NY (Hybrid)",
+    "required_skills": [
+      "javascript",
+      "html",
+      "css",
+      "react",
+      "typescript"
+    ],
+    "preferred_skills": [
+      "redux",
+      "sass",
+      "webpack",
+      "jest",
+      "accessibility"
+    ],
+    "experience_level": "2+ years",
+    "description": "Create beautiful and responsive user interfaces for our web applications. You'll collaborate with designers to implement pixel-perfect UIs.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "15:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "14:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "09:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "11:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "14:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "16:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "14:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "16:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "16:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "16:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "16:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "15:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-BE-006",
+    "title": "Backend Engineer",
+    "company": "TechNova Innovations",
+    "department": "Core Services",
+    "location": "Chicago, IL (On-site)",
+    "required_skills": [
+      "java",
+      "spring",
+      "sql",
+      "rest api",
+      "microservices"
+    ],
+    "preferred_skills": [
+      "kafka",
+      "elasticsearch",
+      "docker",
+      "aws",
+      "nosql"
+    ],
+    "experience_level": "4+ years",
+    "description": "Design and implement scalable backend services and APIs for our enterprise products. You'll build robust and maintainable systems.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "11:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "16:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "15:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "09:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "14:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "13:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "09:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "11:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "10:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "09:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "11:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room A"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-MOB-007",
+    "title": "Mobile App Developer",
+    "company": "TechNova Innovations",
+    "department": "Mobile Solutions",
+    "location": "Los Angeles, CA (Remote Option)",
+    "required_skills": [
+      "react native",
+      "javascript",
+      "mobile development",
+      "ios",
+      "android"
+    ],
+    "preferred_skills": [
+      "redux",
+      "native modules",
+      "app store deployment",
+      "firebase"
+    ],
+    "experience_level": "3+ years",
+    "description": "Develop cross-platform mobile applications using React Native. You'll build features that work flawlessly on both iOS and Android.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "16:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "15:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "10:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "12:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "10:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "11:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Virtual (Zoom)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "12:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "12:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "16:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "11:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "16:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Video Call (Microsoft Teams)"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "09:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "10:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "14:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "Virtual (Zoom)"
+      }
+    ]
+  },
+  {
+    "job_id": "JOB-DBA-008",
+    "title": "Database Administrator",
+    "company": "TechNova Innovations",
+    "department": "Data Infrastructure",
+    "location": "Denver, CO (Hybrid)",
+    "required_skills": [
+      "sql",
+      "postgresql",
+      "mongodb",
+      "database optimization",
+      "backup and recovery"
+    ],
+    "preferred_skills": [
+      "mysql",
+      "oracle",
+      "data modeling",
+      "high availability",
+      "cloud databases"
+    ],
+    "experience_level": "5+ years",
+    "description": "Manage and optimize our database systems to ensure high performance and reliability. You'll be responsible for database security, backup, and recovery procedures.",
+    "interview_slots": [
+      {
+        "date": "2025-03-17",
+        "time": "10:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-17",
+        "time": "16:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "13:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-18",
+        "time": "16:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "11:00",
+        "interviewer": "David Kim, Department Manager",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-19",
+        "time": "14:00",
+        "interviewer": "Lisa Patel, CTO",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "15:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "Branch Office Conference Room"
+      },
+      {
+        "date": "2025-03-20",
+        "time": "15:00",
+        "interviewer": "Emily Rodriguez, VP of Engineering",
+        "location": "HQ Conference Room A"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "11:00",
+        "interviewer": "Sarah Johnson, Senior Recruiter",
+        "location": "HQ Conference Room B"
+      },
+      {
+        "date": "2025-03-21",
+        "time": "11:00",
+        "interviewer": "Michael Chen, Technical Lead",
+        "location": "HQ Conference Room B"
+      }
+    ]
+  }
+]
