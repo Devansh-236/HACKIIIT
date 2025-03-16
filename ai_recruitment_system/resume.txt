@@ -1,27 +1,44 @@
 Bhatia John
-Email: john.doe@example.com
-Phone: (123) 456-7890
+Email: john.doe@example.com | Phone: (123) 456-7890 | LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe
+SUMMARY
 
+Motivated Software Developer & Machine Learning Engineer with 1 year of experience in building web applications and AI models. Passionate about solving real-world problems using Python, JavaScript, Machine Learning, and Full-Stack Development. Strong foundation in algorithms, data structures, and software engineering best practices.
 SKILLS
-- Python
-- Machine Learning
-- AI
-- Deep Learning
-- JavaScript
-- React
-- Node.js
+
+    Programming Languages: Python, JavaScript, C++
+    Machine Learning & AI: TensorFlow, Scikit-learn, Computer Vision, NLP
+    Web Development: React.js, Node.js, Express.js, REST APIs
+    Databases: MySQL, MongoDB, Firebase
+    Cloud & DevOps: AWS, Docker, Git, CI/CD
+    Tools & Frameworks: Pandas, NumPy, OpenCV, Flask
 
 EXPERIENCE
-Senior Machine Learning Engineer at AI Tech (2020-Present)
-- Developed and deployed ML models
-- Led team of data scientists
+Software Developer & Machine Learning Engineer
 
-Software Developer at Web Solutions (2018-2020)
-- Full-stack development using React and Node.js
+Tech Solutions | 2023 - Present
+
+    Developed AI-powered applications using Python, TensorFlow, and OpenCV for real-time data analysis.
+    Built full-stack applications with React.js and Node.js, handling both frontend UI and backend API integration.
+    Implemented RESTful APIs, improving application performance and scalability.
+    Optimized SQL queries, reducing database query time by 30%.
+    Worked in an Agile development environment, collaborating with cross-functional teams.
 
 EDUCATION
-Master's in Computer Science
-AI University (2016-2018)
 
-Bachelor's in Computer Engineering
-Tech University (2012-2016)
+Bachelor’s in Computer Science
+Tech University | 2019 - 2023
+PROJECTS
+
+    Handwritten Digit Recognition: Built a deep learning model using TensorFlow and CNNs, achieving 98% accuracy.
+    E-commerce Website: Developed a MERN-stack application with user authentication and a shopping cart system.
+    AI Chatbot: Created an NLP-based chatbot using Flask and OpenAI API, improving customer engagement.
+
+CERTIFICATIONS
+
+    Google TensorFlow Developer Certificate (2023)
+    AWS Cloud Practitioner (2023)
+
+EXTRAS
+
+    Hackathon Winner: 2nd place in AI Hack 2023, developed a fraud detection system.
+    Open Source Contributor: Contributed to scikit-learn by improving documentation and minor bug fixes.

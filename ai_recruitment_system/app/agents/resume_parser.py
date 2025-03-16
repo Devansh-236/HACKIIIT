@@ -199,7 +199,7 @@ class ResumeParserTool(BaseTool):
                 # Otherwise, just use the raw section text
                 else:
                     extracted_data["experience"] = [" ".join(sections[section_key])]
-        
+
         return extracted_data
 
 
